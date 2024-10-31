@@ -1,4 +1,4 @@
-// src/scripts/combined.js v1.0.1 hada fih scripts bzujhum
+// src/scripts/both.js v1.0.2
 // HMStudio Combined Features (Quick View v1.9.6 & Announcement Bar v1.2.3)
 // Created by HMStudio
 
@@ -806,24 +806,32 @@
             
             // Find the button container - it's the div with text-align: center
             const buttonContainer = card.querySelector('div[style*="text-align: center"]');
-            
-            if (buttonContainer) {
-              const button = document.createElement('button');
-              button.className = 'quick-view-btn';
-              button.style.cssText = `
-                width: 35px;
-                height: 35px;
-                padding: 0;
-                margin: 0 5px;
-                border: 1px solid #ddd;
-                border-radius: 4px;
-                background-color: #ffffff;
-                cursor: pointer;
-                transition: background-color 0.3s ease;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-              `;
+if (buttonContainer) {
+  // Update the button container styles to ensure horizontal alignment
+  buttonContainer.style.cssText = `
+    text-align: center;
+    display: inline-flex;  /* Changed to inline-flex */
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  `;
+
+  const button = document.createElement('button');
+  button.className = 'quick-view-btn';
+  button.style.cssText = `
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-flex;  /* Changed to inline-flex */
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;  /* Added this */
+  `;
   
               // Add eye icon using SVG
               button.innerHTML = `
