@@ -1,5 +1,5 @@
-// src/scripts/both.js v1.0.3
-// HMStudio Combined Features (Quick View v1.9.6 & Announcement Bar v1.2.3)
+// src/scripts/both.js v1.0.4
+// HMStudio Combined Features (Quick View v2.0.4 & Announcement Bar v1.2.6)
 // Created by HMStudio
 
 (function() {
@@ -808,13 +808,14 @@
             const buttonContainer = card.querySelector('div[style*="text-align: center"]');
 if (buttonContainer) {
   // Update the button container styles to ensure horizontal alignment
-  buttonContainer.style.cssText = `
+  buttonContainer.className = 'hmstudio-buttons-container';  // Add this class
+buttonContainer.style.cssText = `
     text-align: center;
-    display: inline-flex;  /* Changed to inline-flex */
+    display: inline-flex;  
     align-items: center;
     justify-content: center;
     gap: 5px;
-  `;
+`;
 
   const button = document.createElement('button');
   button.className = 'quick-view-btn';
@@ -857,15 +858,11 @@ if (buttonContainer) {
   
               // Insert before the first button in the container
               const firstButton = buttonContainer.querySelector('a, button');
-              if (firstButton) {
-                if (this.config.quickViewStyle === 'left') {
-                  buttonContainer.insertBefore(button, firstButton);
-                } else {
-                  buttonContainer.insertBefore(button, firstButton.nextSibling);
-                }
-              } else {
-                buttonContainer.appendChild(button);
-              }
+          if (firstButton) {
+            buttonContainer.insertBefore(button, firstButton);
+          } else {
+            buttonContainer.appendChild(button);
+          }
             }
           }
         });
